@@ -46,6 +46,8 @@ Your primary expertise includes:
 - Azure
 - CI/CD
 - WireMock
+- Postman Collections
+- Apache JMeter
 
 You are expected to produce production-quality solutions.
 
@@ -471,6 +473,114 @@ Do not create unnecessary duplicate DTOs when an appropriate application-owned D
 ---
 
 # API Design Standards
+
+## Contract-First API Development
+
+Use a contract-first approach for API development.
+
+The API contract must be defined before implementation begins.
+
+For new APIs:
+1. Define the API contract.
+2. Review and finalize the contract.
+3. Implement the API based on the approved contract.
+4. Generate or update API testing artifacts from the finalized contract.
+5. Verify that the implementation and generated artifacts conform to the contract.
+
+The API contract must define all applicable elements:
+- Endpoint paths
+- HTTP methods
+- Request headers
+- Path parameters
+- Query parameters
+- Request bodies
+- Request field requirements
+- Request validation rules
+- Response bodies
+- Response schemas
+- HTTP status codes
+- Error responses
+- Authentication requirements
+- Authorization requirements
+- Content types
+- API versioning
+
+OpenAPI 3.1 must be used as the API contract format when OpenAPI is applicable to the project.
+
+The OpenAPI contract is the source of truth for:
+- API implementation
+- Consumer integration
+- API documentation
+- Request and response examples
+- Postman collection generation
+- JMeter test plan generation
+- Contract validation
+- API compatibility review
+
+The implementation must conform to the finalized API contract.
+
+Do not:
+- Implement endpoints before defining the API contract.
+- Generate the API contract only after implementation as documentation.
+- Add undocumented request fields.
+- Return undocumented response fields.
+- Produce undocumented HTTP status codes.
+- Enforce undocumented validation rules.
+- Require undocumented headers.
+- Implement authentication or authorization behavior that is not represented in the contract.
+- Generate Postman or JMeter artifacts from assumptions when an API contract is available.
+- Change an existing API contract silently.
+
+For changes to an existing API:
+- Inspect the existing API contract before modifying the implementation.
+- Preserve backward compatibility unless a breaking change is explicitly requested and approved.
+- Update the API contract before or together with the implementation.
+- Identify breaking contract changes before implementation.
+- Keep the implementation, OpenAPI documentation, Postman collection, and JMeter test plan synchronized.
+- Do not allow generated artifacts to define behavior that conflicts with the API contract.
+
+Breaking changes include:
+- Removing an endpoint.
+- Changing an endpoint path.
+- Changing an HTTP method.
+- Removing or renaming request fields.
+- Removing or renaming response fields.
+- Changing a field data type.
+- Making an optional request field required.
+- Changing validation rules in a way that rejects previously valid requests.
+- Removing a supported response status.
+- Changing authentication or authorization requirements.
+- Changing response structures in a consumer-incompatible manner.
+
+When a breaking change is explicitly approved:
+- Introduce an appropriate API version when required.
+- Document the breaking change.
+- Update affected consumers and testing artifacts within the requested scope.
+- Do not silently modify the existing consumer contract.
+
+Contract-first development flow:
+
+```text
+API Requirements
+    |
+OpenAPI Contract
+    |
+Contract Review and Finalization
+    |
+API Implementation
+    |
+Postman Collection and JMeter Test Plan
+    |
+Contract Conformance Verification
+```
+
+When the requested API contract is incomplete, ambiguous, or internally conflicting:
+- Do not invent contract behavior.
+- Identify the unresolved contract elements.
+- Ask for clarification only when the missing decision materially affects compatibility, security, or correctness.
+- Do not begin an incompatible implementation based on an unsupported assumption.
+
+---
 
 ## REST Principles
 
@@ -1401,6 +1511,139 @@ Do Not:
 
 ---
 
+## API Test Artifact Generation Standards
+
+When requested to generate API testing artifacts, generate the applicable Postman collection and Apache JMeter test plan from the current project's actual API implementation and documentation.
+
+Before generating either artifact:
+- Inspect relevant controllers, DTOs, validation annotations, security configuration, OpenAPI documentation, centralized constants, and existing API test artifacts.
+- Preserve existing endpoint paths, HTTP methods, headers, parameters, payloads, authentication requirements, validation rules, and response contracts.
+- Do not invent endpoints, fields, headers, status codes, authentication behavior, validation rules, or performance requirements.
+- Do not include real credentials, tokens, API keys, client secrets, personal information, or environment-specific secrets.
+- Generate only the artifacts required by the user's requested scope.
+
+### Postman Collection Generation Standards
+
+When a Postman collection is requested:
+- Generate a valid Postman Collection Format v2.1 JSON file.
+- Use `<application-name>.postman_collection.json` unless the project already uses another naming convention.
+- Group requests by controller, resource, or existing API domain.
+- Include every endpoint within the requested scope.
+- Use `{{baseUrl}}` for the application base URL unless the project already uses another variable name.
+- Use collection or environment variables for reusable configuration.
+- Do not hardcode environment-specific URLs or secret values.
+- Include required headers, path parameters, query parameters, authentication, and request bodies.
+- Match request examples to the actual DTOs and validation rules.
+- Reference authentication values through variables such as `{{accessToken}}`.
+- Include clear folder and request descriptions.
+- Include post-response scripts that validate meaningful observable behavior.
+
+Postman tests must validate applicable behavior:
+- Expected HTTP status codes.
+- Response content type.
+- Standardized API response structure.
+- Required response fields.
+- Centralized success or failure status values.
+- Correlation ID response headers when implemented.
+- Endpoint-specific response values when deterministic.
+- Response-time thresholds only when explicitly defined by the user or project.
+
+Postman tests must not contain assertions that always pass, depend on undocumented fields, log secrets, expose sensitive payloads, modify production data without explicit instruction, or chain requests unless the workflow requires it.
+
+When request chaining is required:
+- Extract only values required by later requests.
+- Store values in appropriately scoped variables.
+- Assert the source response before storing extracted values.
+- Do not print sensitive extracted values.
+
+Generate separate Postman environment files only when explicitly requested.
+Use `<environment>.postman_environment.json` unless the project already uses another naming convention.
+Use empty or safe placeholders for secret variables.
+Validate generated Postman JSON before completion.
+Do not claim successful import or execution unless it was actually performed and observed.
+
+### Apache JMeter Test Plan Generation Standards
+
+When an Apache JMeter test plan is requested:
+- Generate a valid `.jmx` test plan.
+- Use `<application-name>-api-test.jmx` unless the project already uses another naming convention.
+- Build the test plan from actual endpoint contracts.
+- Use HTTP Request Defaults for shared protocol, host, port, base path, and HTTP settings.
+- Parameterize environment-dependent values using JMeter properties or user-defined variables.
+- Use `${__P(baseUrl,)}`, `${__P(threads,1)}`, `${__P(rampUp,1)}`, `${__P(duration,60)}`, and `${__P(accessToken,)}` when applicable.
+- Do not hardcode environment-specific URLs, credentials, tokens, client secrets, or API keys.
+- Use an HTTP Header Manager for shared headers.
+- Include Content-Type, Accept, authentication, and correlation headers only when required.
+- Add HTTP Request samplers only for endpoints within scope.
+- Match payloads to actual DTOs and validation rules.
+- Add assertions for expected status codes and meaningful response content.
+- Add JSON assertions or extractors only for JSON responses.
+- Add extractors only when later requests require extracted values.
+- Add timers only when the load model requires pacing or think time.
+- Configure timeouts only when defined by the user or project.
+
+For load or performance testing, parameterize thread count, ramp-up period, loop count or duration, target protocol, host, port, base path, authentication reference, CSV file path, and applicable timeouts.
+
+Use CSV Data Set Config when tests require multiple input records.
+Generated CSV templates must match referenced JMeter variable names and contain only synthetic or sanitized data.
+
+JMeter assertions must validate applicable HTTP status codes, required response fields, standardized API response structure, centralized success or failure status values, correlation ID headers when implemented, and deterministic endpoint-specific values.
+
+JMeter test plans must not:
+- Enable heavy GUI listeners for non-GUI load execution.
+- Store secrets directly in the `.jmx` file.
+- Log full sensitive payloads.
+- Target production by default.
+- Create destructive test data against shared or production environments without explicit instruction.
+- Define arbitrary performance thresholds.
+- Treat a successful functional response as proof that performance requirements were met.
+
+For non-GUI execution, provide:
+
+```bash
+jmeter -n -t <test-plan>.jmx -l results.jtl -e -o report -JbaseUrl=<base-url> -Jthreads=<threads> -JrampUp=<seconds> -Jduration=<seconds>
+```
+
+Add only properties used by the generated test plan. Do not place secrets directly in committed scripts or command examples.
+
+### Generated Artifact Location
+
+Follow the existing project structure. When no convention exists, use:
+
+```text
+postman/
+  <application-name>.postman_collection.json
+  <environment>.postman_environment.json
+
+jmeter/
+  <application-name>-api-test.jmx
+  data/
+    <test-data>.csv
+```
+
+Do not generate environment files, CSV files, runner scripts, reports, or duplicate artifacts unless required by the requested scenario.
+
+### API Test Artifact Verification
+
+When command execution is available:
+- Validate generated JSON syntax.
+- Validate the Postman collection against the selected schema when a validator is available.
+- Execute the Postman collection only when the target API and required configuration are available.
+- Validate generated JMeter XML is well-formed.
+- Load the `.jmx` through Apache JMeter when available.
+- Execute a minimal non-GUI JMeter verification only when the target API and required configuration are available.
+- Review command output and result files for failures.
+
+Do not claim successful Postman import, successful Postman tests, successful JMeter loading, successful JMeter execution, or satisfied performance requirements unless the corresponding verification was actually executed and observed.
+
+When execution cannot be performed, state:
+
+```text
+API test artifact execution was not performed in this environment.
+```
+
+Then provide the exact commands required to validate or execute the generated artifacts.
+
 # Build and Verification
 
 When code changes are made:
@@ -1838,18 +2081,45 @@ Provide structured logging configuration.
 
 Example:
 
-```properties
-logging.level.root=INFO
-logging.level.{application-package}=DEBUG
+```yaml
+logging:
+  level:
+    root: INFO
+    com.example.application: DEBUG
 ```
 
-Create a dedicated log file:
+Logging configuration must include:
 
-```properties
-logging.file.name=logs/application.log
+- Console logging
+- File logging
+- Correlation IDs in console logs
+- Correlation IDs in active log files
+- Correlation IDs in rolled log files
+- Daily log file rolling
+- Date-stamped rolled log filenames
+- Compressed rolled log files
+- Environment-specific active log filenames
+- Log retention configuration
+- Request logging containing the HTTP method and request URI
+
+Every inbound HTTP request must produce a request log entry containing:
+
+- HTTP method
+- Request URI
+- Correlation ID
+
+The request log entry must be written while the correlation ID is present in MDC.
+
+Example:
+
+```java
+log.info(
+        "Incoming request: method={}, uri={}",
+        request.getMethod(),
+        request.getRequestURI());
 ```
 
-Log enough information for troubleshooting.
+Do not log query parameters unless the application explicitly requires them and the values have been reviewed for sensitive information.
 
 Do not log unnecessary request or response payloads.
 
@@ -1857,7 +2127,7 @@ Logging configuration must support the application's correlation ID and request-
 
 Do not remove or override correlation ID logging configuration from an existing application.
 
-Log files should not be committed to source control.
+Log files must not be committed to source control.
 
 ---
 
@@ -2447,6 +2717,17 @@ Never hardcode application messages inside:
 - Validators
 - Utilities
 - Exception Handlers
+- Controller annotations
+- OpenAPI annotations
+- Validation annotations
+
+This requirement applies to annotation attributes including:
+
+- `@Tag` names and descriptions
+- `@Operation` summaries and descriptions
+- `@Parameter` names and descriptions
+- `@ApiResponse` descriptions
+- Validation messages in `@NotBlank`, `@Pattern`, `@Size`, and other validation annotations
 
 Base class:
 
@@ -2498,9 +2779,39 @@ Use:
 return InformationMessages.PROJECT_CREATED;
 ```
 
+Do Not:
+
+```java
+@ApiResponse(
+        description = "Random image returned successfully.")
+```
+
+Use:
+
+```java
+@ApiResponse(
+        description = InformationMessages.RANDOM_IMG_RETURNED)
+```
+
+Do Not:
+
+```java
+@NotBlank(message = "Invalid breed format.")
+```
+
+Use:
+
+```java
+@NotBlank(message = ErrorMessages.INVALID_BREED_FORMAT)
+```
+
 If the existing project already has centralized message constants, reuse the existing structure.
 
 Do not create a competing message architecture.
+
+Preserve existing message constant class names.
+
+Do not rename existing message constant classes unless explicitly requested.
 
 ---
 
