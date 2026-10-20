@@ -1,0 +1,1934 @@
+Perform a strict, read-only compliance audit of the complete API project in this repository.
+
+Act as the Senior Java API Engineer in REVIEW and AUDIT mode only.
+
+The objective is to determine whether the generated API project fully complies with:
+
+1. The complete Senior Java API Engineer agent instructions.
+2. Every applicable project skill, rule, restriction, and mandatory standard.
+3. The approved project requirements and acceptance criteria.
+4. The finalized OpenAPI 3.1 contract.
+5. The contract-first development workflow.
+6. The existing project architecture, conventions, configuration, and implementation patterns.
+7. The required Postman collection standards.
+8. The required Apache JMeter test plan standards.
+9. The required testing and per-class JaCoCo coverage standards.
+10. The required security, logging, configuration, middleware, API response, exception-handling, and production-readiness standards.
+
+This is an assessment-only task.
+
+Do not modify, create, delete, move, rename, reformat, or regenerate any file.
+
+Do not apply remediation automatically.
+
+Do not generate replacement code.
+
+Do not generate a new OpenAPI contract, Postman collection, JMeter test plan, test class, configuration file, or implementation file.
+
+Do not perform unrelated refactoring.
+
+Do not expand the project scope.
+
+==================================================
+1. AUTHORITATIVE SOURCES
+==================================================
+
+Before starting the assessment, inspect and read:
+
+1. The complete Senior Java API Engineer agent instructions.
+2. Every applicable skill and instruction file.
+3. The approved OpenAPI 3.1 contract.
+4. Project requirements and acceptance criteria available in the repository.
+5. README files and architecture documentation.
+6. Maven configuration.
+7. Application and environment configuration.
+8. Source code.
+9. Test code.
+10. Existing JaCoCo reports.
+11. Postman collection files.
+12. Postman environment files, when present.
+13. Apache JMeter JMX files.
+14. JMeter test-data files, when present.
+15. CI/CD and deployment configuration.
+16. Git changes and repository status, when available.
+
+Use the following precedence:
+
+1. Explicit user requirements and approved project requirements
+2. Explicit prohibitions and restrictions in the agent instructions
+3. Finalized OpenAPI 3.1 contract
+4. Security requirements
+5. Existing project architecture and established conventions
+6. Applicable Senior Java API Engineer standards
+7. Project-specific acceptance criteria
+8. Framework conventions and general best practices
+
+If authoritative sources conflict, report the conflict.
+
+Do not silently choose one conflicting requirement.
+
+Do not convert a general recommendation into a mandatory compliance requirement unless it is explicitly mandatory for this project.
+
+The existing project is the primary source of truth for existing implementation conventions unless preserving an existing convention would cause:
+
+- A security vulnerability
+- Incorrect behavior
+- Contract noncompliance
+- Failure to satisfy an explicit requirement
+
+==================================================
+2. AUDIT OPERATING RULES
+==================================================
+
+You MUST:
+
+- Inspect the complete repository, not only currently opened files.
+- Trace implementation behavior across all applicable layers.
+- Map every assessment result to an authoritative requirement.
+- Cite exact repository-relative file paths.
+- Include class, method, property, endpoint, request, test, or sampler names.
+- Include line numbers or line ranges when available.
+- Provide repository evidence for every PASS, PARTIAL PASS, and FAIL.
+- Distinguish confirmed findings from unverified concerns.
+- Mask secrets and sensitive values.
+- Report missing evidence as NOT VERIFIED.
+- Report genuinely inapplicable requirements as NOT APPLICABLE.
+- Identify incomplete, stale, duplicated, contradictory, or invalid artifacts.
+- Validate consistency between requirements, OpenAPI, implementation, tests, Postman, and JMeter.
+
+You MUST NOT:
+
+- Modify the repository.
+- Apply automatic fixes.
+- Generate files.
+- Rename existing elements.
+- Run destructive operations.
+- Run tests against production.
+- Run load, stress, spike, or endurance tests without explicit authorization.
+- Introduce requirements not found in the authoritative sources.
+- Report personal preference as a violation.
+- Mark a requirement PASS without evidence.
+- Claim successful verification unless the corresponding command was executed successfully and its output was reviewed.
+- Treat a successful compilation as proof that tests passed.
+- Treat successful tests as proof that Maven verification passed.
+- Treat a successful Maven build as proof that the application started.
+- Treat successful application startup as proof that endpoints work.
+- Treat aggregate coverage as proof that every production class meets the required threshold.
+- Treat the existence of Postman or JMeter files as proof that they are valid or complete.
+- Treat successful API responses as proof that performance requirements were satisfied.
+
+==================================================
+3. REQUIREMENT INVENTORY
+==================================================
+
+Create a complete requirement inventory before evaluating compliance.
+
+For every requirement, record:
+
+- Requirement ID
+- Requirement category
+- Requirement summary
+- Authoritative source
+- Source section
+- Mandatory or conditional classification
+- Applicable project component
+- Validation method
+- Required evidence
+
+Include applicable requirements from these categories:
+
+- Scope discipline
+- Naming preservation
+- Existing-project compatibility
+- Simplicity
+- Layered architecture
+- Controllers
+- Services
+- Repositories
+- Entities
+- DTOs
+- Mappers
+- Contract-first development
+- OpenAPI 3.1
+- REST conventions
+- API versioning
+- HTTP status codes
+- Standardized API responses
+- Input validation
+- Authentication
+- Authorization
+- Secret management
+- SQL injection prevention
+- Sensitive-data handling
+- Encryption and password hashing
+- Centralized exception handling
+- Centralized message constants
+- Centralized response status constants
+- Constants architecture
+- Logging
+- Correlation IDs
+- Actuator health monitoring
+- Externalized configuration
+- Environment configuration
+- Database and JPA
+- Transaction boundaries
+- External API integration
+- Middleware boundaries
+- Internal and external contract separation
+- Integration mapping
+- Translation layers
+- Lombok
+- Unit testing
+- Integration testing
+- WireMock
+- Mockito
+- JUnit 5
+- JaCoCo
+- Postman
+- Apache JMeter
+- Maven build and verification
+- Documentation
+- Production readiness
+
+Do not omit satisfied requirements from the inventory.
+
+==================================================
+4. SCOPE AND CHANGE DISCIPLINE AUDIT
+==================================================
+
+Determine whether the generated project implemented only the approved requirements.
+
+Inspect:
+
+- Endpoints
+- Controllers
+- Services
+- Repositories
+- Entities
+- DTOs
+- Mappers
+- Validators
+- Exceptions
+- Constants
+- Security components
+- Integration clients
+- Token services
+- Schedulers
+- Message consumers and producers
+- Database objects
+- Dependencies
+- Build plugins
+- Utilities
+- Configuration
+- Tests
+- Documentation
+- Postman artifacts
+- JMeter artifacts
+- Deployment files
+
+Identify:
+
+- Additional endpoints
+- Additional request or response fields
+- Additional entities or database structures
+- Additional integrations
+- Additional dependencies
+- Additional infrastructure
+- Unrequested security mechanisms
+- Unrequested scheduled tasks
+- Unrequested background processing
+- Placeholder or sample production code
+- Hidden functionality
+- Feature creep
+- Unapproved architectural changes
+- Assumptions implemented as requirements
+- Unrelated refactoring
+- Unrelated formatting
+- Renamed existing elements
+- Moved or reorganized existing files or packages
+
+Classify questionable components as:
+
+- IN SCOPE
+- OUT OF SCOPE
+- NOT VERIFIED
+
+For every OUT OF SCOPE result, provide:
+
+- Component
+- Exact file path
+- Evidence
+- Approved requirement being exceeded
+- Reason
+- Impact
+- Smallest required remediation
+
+==================================================
+5. CONTRACT-FIRST AND OPENAPI 3.1 AUDIT
+==================================================
+
+Locate the authoritative OpenAPI contract.
+
+Verify that OpenAPI 3.1 is used when applicable.
+
+Determine whether repository evidence supports the required flow:
+
+API Requirements
+-> OpenAPI Contract
+-> Contract Review and Finalization
+-> API Implementation
+-> Postman Collection and JMeter Test Plan
+-> Contract Conformance Verification
+
+Assess whether:
+
+- The contract exists.
+- The contract is OpenAPI 3.1.
+- The contract appears authoritative rather than generated afterward only as documentation.
+- The implementation conforms to the finalized contract.
+- The Postman collection conforms to the contract.
+- The JMeter test plan conforms to the contract.
+- Contract changes were not made silently.
+- Breaking changes were identified and approved.
+- Backward compatibility was preserved where required.
+- Existing paths and models were preserved unless explicitly changed.
+
+For every OpenAPI operation, verify:
+
+- Endpoint path
+- HTTP method
+- Operation ID
+- Endpoint description
+- Request headers
+- Path parameters
+- Query parameters
+- Request body
+- Request field descriptions
+- Required and optional fields
+- Validation rules
+- Data types
+- Data formats
+- Enumerated values
+- Content types
+- Success responses
+- Error responses
+- Response schemas
+- HTTP status codes
+- Authentication requirements
+- Authorization requirements
+- API version
+- Request examples
+- Response examples
+
+Detect and report:
+
+- Missing contract operations
+- Missing implementation operations
+- Undocumented implementation endpoints
+- Contract drift
+- Undocumented request fields
+- Undocumented response fields
+- Undocumented headers
+- Undocumented validations
+- Undocumented status codes
+- Schema mismatches
+- Validation mismatches
+- Authentication mismatches
+- Authorization mismatches
+- Error-contract mismatches
+- Incorrect examples
+- Implementation-first development evidence
+- Silent contract changes
+- Unapproved breaking changes
+
+For every mismatch, include:
+
+- OpenAPI operation
+- Contract file and section
+- Implementation file and method
+- Expected behavior
+- Actual behavior
+- Status
+- Severity
+- Required remediation
+
+==================================================
+6. REST AND API DESIGN AUDIT
+==================================================
+
+Validate:
+
+- Resource-oriented endpoint paths
+- Correct use of action-oriented paths
+- Correct HTTP methods
+- API versioning for new production-style APIs
+- Preservation of existing endpoint paths
+- Correct HTTP status codes
+- Correct use of 200, 201, 204, 400, 401, 403, 404, 409, 422, 500, and 503 where applicable
+- No response body for 204 No Content
+- No HTTP 200 used for every outcome
+- Contract-aligned content types
+- Complete consumer-facing API documentation
+
+Do not report an existing unversioned endpoint as a violation merely because it is unversioned if the project modification was required to preserve the existing contract and no path change was requested.
+
+==================================================
+7. STANDARD API RESPONSE AUDIT
+==================================================
+
+Verify whether every applicable API response uses the required generic standardized response contract:
+
+ApiResponse<T>
+
+Expected body structure:
+
+{
+  "data": {},
+  "message": null,
+  "status": "SUCCESS"
+}
+
+Expected failure structure:
+
+{
+  "data": null,
+  "message": "Safe error details",
+  "status": "FAILED"
+}
+
+Verify:
+
+- Controllers use the standardized response wrapper for responses containing bodies.
+- Exception handlers use the same standardized response wrapper.
+- Raw entities are not returned.
+- Arbitrary response structures are not returned.
+- Correct HTTP status codes are used with the wrapper.
+- A 204 response contains no body.
+- Response status values use centralized response status constants.
+- Response messages use centralized message constants.
+- Success and error responses match OpenAPI.
+- Internal implementation details are not exposed.
+
+Identify every response path that bypasses the required contract.
+
+==================================================
+8. CENTRALIZED CONSTANTS AUDIT
+==================================================
+
+Inspect controllers, services, repositories, validators, utilities, exception handlers, configuration, tests, OpenAPI annotations, and validation annotations.
+
+Verify that application messages are not hardcoded in:
+
+- Controllers
+- Services
+- Repositories
+- Validators
+- Utilities
+- Exception handlers
+- Controller annotations
+- OpenAPI annotations
+- Validation annotations
+
+Inspect applicable annotation attributes, including:
+
+- @Tag names and descriptions
+- @Operation summaries and descriptions
+- @Parameter names and descriptions
+- @ApiResponse descriptions
+- @NotBlank messages
+- @Pattern messages
+- @Size messages
+- Other validation messages
+
+Verify:
+
+- Messages use appropriate centralized message classes.
+- Response statuses use centralized response status classes.
+- Constants are organized by responsibility.
+- Existing constant class names are preserved.
+- Existing constants architecture is reused.
+- No competing constants architecture was introduced.
+- No giant generic constants class contains unrelated values.
+- No duplicate constant definitions exist.
+- No hardcoded SUCCESS or FAILED values are used where centralized constants are required.
+
+Review applicable classes such as:
+
+- InformationMessages
+- ErrorMessages
+- ValidationMessages
+- DebugMessages
+- SecurityMessages
+- ResponseStatus
+- ApiConstants
+- ApplicationConstants
+- HeaderConstants
+- SwaggerConstants
+
+Do not require these exact class names when the project already has an established equivalent architecture.
+
+==================================================
+9. LAYERED ARCHITECTURE AUDIT
+==================================================
+
+Validate the required flow:
+
+Controller
+-> Service
+-> Repository or Integration Client
+-> Database or External API
+
+Controller audit:
+
+- Only handles HTTP concerns.
+- Performs request binding.
+- Triggers declarative validation.
+- Generates API responses and status codes.
+- Contains no business logic.
+- Does not call repositories directly.
+- Contains no SQL.
+- Does not call external APIs directly.
+- Does not acquire OAuth tokens.
+- Does not perform complex downstream transformations.
+- Does not trust client-provided authorization data.
+
+Service audit:
+
+- Owns business rules and business validation.
+- Owns workflow orchestration.
+- Defines appropriate transaction boundaries.
+- Coordinates repositories and integration clients.
+- Does not contain unnecessary HTTP-specific behavior.
+- Does not contain raw SQL.
+- Does not implement transport-specific external calls when an integration layer exists.
+
+Repository audit:
+
+- Owns persistence and database interaction.
+- Contains no business logic.
+- Contains no authorization decisions.
+- Does not construct controller responses.
+- Does not unnecessarily return API response wrappers.
+
+Entity and DTO audit:
+
+- Entities remain persistence-focused.
+- Sensitive fields are not exposed.
+- Persistence entities are not returned directly from APIs.
+- Application-owned request and response DTOs are used where appropriate.
+- Duplicate DTOs were not created unnecessarily.
+- Persistence and downstream-provider structures do not leak into consumer contracts.
+
+==================================================
+10. INPUT VALIDATION AUDIT
+==================================================
+
+Verify applicable input validation for:
+
+- Request bodies
+- Path variables
+- Query parameters
+- Request headers
+- Null values
+- Blank values
+- Empty values
+- Length limits
+- Numeric ranges
+- Formats
+- Patterns
+- Identifiers
+- Enumerations
+- Collection sizes
+
+Verify:
+
+- Jakarta Validation is used for declarative request validation.
+- Business-rule validation is implemented in the service layer.
+- Server-side validation is not omitted because another consumer or gateway performs validation.
+- Validation annotations match OpenAPI.
+- Validation messages use centralized constants.
+- No undocumented validation rule rejects a contract-valid request.
+
+==================================================
+11. EXCEPTION-HANDLING AUDIT
+==================================================
+
+Verify:
+
+- Centralized exception handling uses @RestControllerAdvice.
+- Specific application exceptions represent distinct failure conditions.
+- Exceptions are thrown from appropriate layers.
+- Exception-to-response mapping is centralized.
+- HTTP status codes are correct.
+- Standardized API error responses are returned.
+- Centralized message constants are used.
+- Centralized response status constants are used.
+- Stack traces and internal implementation details are not exposed.
+- Raw downstream errors are not exposed.
+- Error contracts match OpenAPI.
+
+Inspect applicable conditions such as:
+
+- Resource not found
+- Duplicate resource
+- Validation failure
+- Conflict
+- External service failure
+- External timeout
+- Authentication failure
+- Authorization failure
+- Unexpected internal failure
+
+==================================================
+12. SECURITY AUDIT
+==================================================
+
+Inspect:
+
+- Authentication
+- Authorization
+- Spring Security configuration
+- JWT handling
+- OAuth2 handling
+- OpenID Connect handling
+- Input validation
+- SQL construction
+- Secret management
+- Credential management
+- External API authentication
+- Sensitive logging
+- Error responses
+- Configuration
+- Tests
+- Postman
+- JMeter
+
+Detect:
+
+- Hardcoded passwords
+- Hardcoded API keys
+- Hardcoded tokens
+- Hardcoded client secrets
+- Hardcoded certificates or private keys
+- Credentials committed to source control
+- Secrets in documentation
+- Secrets in tests
+- Secrets in Postman
+- Secrets in JMeter
+- Secrets in logs
+- Secrets in exception messages
+- Stack traces exposed to consumers
+- SQL built through string concatenation
+- Missing authorization
+- Incorrect role enforcement
+- Authorization based on client-provided roles or privilege indicators
+- Custom authentication protocols
+- Custom OAuth2 implementations
+- Custom encryption or password hashing
+- Plaintext password storage
+- Reversible password storage
+- Sensitive response fields
+- Unsafe health endpoint exposure
+- Internal server names, hostnames, file paths, SQL, connection strings, or credentials exposed to consumers
+
+Mask all detected secret values.
+
+Do not reproduce the complete value in the audit report.
+
+==================================================
+13. OAUTH2 AND AUTHENTICATION BOUNDARY AUDIT
+==================================================
+
+When OAuth2 or downstream authentication is applicable, verify:
+
+- Established framework support is used.
+- Client credentials are externalized.
+- Tokens are never hardcoded.
+- Tokens are never logged.
+- Tokens are never returned to consumers.
+- Token acquisition is centralized.
+- Tokens are reused until expiration.
+- Expired tokens are refreshed or reacquired correctly.
+- Token failures are handled safely.
+- Consumers do not depend on downstream authentication.
+- Consumer authentication remains separate from provider authentication.
+- Downstream credentials remain inside the middleware boundary.
+- Authentication behavior matches OpenAPI.
+
+==================================================
+14. DATABASE, JPA, AND TRANSACTION AUDIT
+==================================================
+
+When persistence is used, verify:
+
+- Spring Data JPA and Repository Pattern usage where applicable.
+- No SQL string concatenation.
+- Parameterized queries are used.
+- Business logic is not present in repositories.
+- Authorization decisions are not present in repositories.
+- Entity relationships are safe.
+- Excessive eager loading is avoided.
+- N+1 behavior is addressed where demonstrated.
+- Large or growing result sets are bounded where required.
+- Lazy relationships are not unintentionally serialized.
+- Transactions represent actual atomic persistence units.
+- Transaction boundaries are defined in the service layer.
+- @Transactional is not placed on controllers.
+- Transactions are not applied broadly without need.
+- External API calls are not placed inside database transactions merely for convenience.
+- Existing transaction behavior was not unnecessarily altered.
+
+Do not report speculative performance concerns as confirmed violations.
+
+==================================================
+15. LOMBOK AUDIT
+==================================================
+
+Inspect every Lombok-enabled class.
+
+Verify:
+
+- Lombok is already available or was introduced only when required.
+- The managed project version is used.
+- Annotation processing is configured.
+- @RequiredArgsConstructor is used only when generated parameters are required dependencies.
+- Constructor injection is used for Spring components.
+- @Getter and @Setter expose only required operations.
+- @Data is not used by default.
+- @Data is not used on JPA entities.
+- @EqualsAndHashCode on entities is safe for identity and proxy behavior.
+- @ToString does not expose secrets or trigger recursive or lazy relationship loading.
+- @Builder does not bypass validation or permit invalid states.
+- JPA-required constructors are preserved.
+- Generated methods do not conflict with explicit methods.
+- Meaningful explicit behavior was not replaced by generated methods.
+- Immutable fields do not receive inappropriate setters.
+- JSON serialization remains compatible with DTOs and API contracts.
+- Existing Lombok annotations were preserved unless change was required.
+- Lombok was not added only to reduce line count.
+
+Do not report Lombok integration as successful unless compilation and relevant tests were actually executed successfully.
+
+==================================================
+16. MIDDLEWARE AND EXTERNAL INTEGRATION AUDIT
+==================================================
+
+When the application is middleware or integrates with external systems, verify:
+
+- The consumer contract is application-owned.
+- Consumer-facing models do not expose vendor request models.
+- Consumer-facing models do not expose vendor response models.
+- Consumer-facing errors do not expose vendor error contracts.
+- Internal and external DTOs are separated where responsibilities differ.
+- Request transformation occurs in the integration layer.
+- Response transformation occurs in the integration layer.
+- Error transformation occurs in the integration layer.
+- Authentication translation occurs inside the middleware boundary.
+- Header translation is correctly implemented.
+- Field mappings are traceable.
+- Data normalization is correctly implemented.
+- Downstream status translation is correct.
+- Provider contract changes do not automatically alter consumer contracts.
+- Controllers do not call providers directly.
+- External URLs are configurable.
+- An approved Spring HTTP client, RestClient or WebClient, is used.
+- Integration failures are logged safely.
+- Raw downstream errors are not exposed.
+
+Validate mapping documentation for:
+
+- Internal endpoint -> External endpoint
+- Internal request DTO -> External request DTO
+- Internal response DTO -> External response DTO
+- Internal error contract -> External error contract
+
+Report missing mapping documentation only when applicable to the integration.
+
+==================================================
+17. LOGGING AND CORRELATION ID AUDIT
+==================================================
+
+Verify:
+
+- A logging framework is used.
+- System.out.println is not used.
+- Console logging is configured.
+- File logging is configured.
+- Daily rolling is configured.
+- Rolled files use date-stamped names.
+- Rolled files are compressed.
+- Environment-specific active log filenames are supported.
+- Log retention is configured.
+- Log files are not committed.
+- Every inbound request produces a request log containing:
+  - HTTP method
+  - Request URI
+  - Correlation ID
+- Query parameters are not logged unless explicitly required and reviewed.
+- Request and response payloads are not unnecessarily logged.
+- Sensitive values are not logged at any level.
+
+Validate correlation ID behavior:
+
+- Header name is X-Correlation-Id.
+- Existing inbound correlation IDs are accepted.
+- A correlation ID is generated when absent.
+- The correlation ID is stored in MDC.
+- The correlation ID is available when request logging occurs.
+- The correlation ID is returned in the response header.
+- Console patterns include the MDC correlation ID.
+- Active file patterns include the MDC correlation ID.
+- Rolled file logs preserve the configured correlation ID pattern.
+- MDC cleanup is performed safely after request processing.
+
+Detect logging of:
+
+- Passwords
+- Tokens
+- Refresh tokens
+- Client secrets
+- API keys
+- Personal information
+- Database credentials
+- Connection strings
+- Sensitive request or response payloads
+
+==================================================
+18. CONFIGURATION AND ENVIRONMENT AUDIT
+==================================================
+
+Inspect:
+
+- application.properties
+- application.yml
+- Profile-specific configuration
+- Environment templates
+- Logging configuration
+- Database configuration
+- OAuth configuration
+- External API configuration
+- Feature flags
+- Build configuration
+- Deployment configuration
+- Postman variables
+- JMeter properties
+
+Verify:
+
+- Environment-specific values are externalized.
+- URLs are not hardcoded.
+- Credentials are not hardcoded.
+- Secrets are not committed.
+- Deployment across environments does not require source-code changes.
+- LOCAL, DEV, SIT, UAT, QA, and PROD can be supported where applicable.
+- Configuration keys match implementation binding.
+- Required configuration is documented.
+- Unsafe defaults are absent.
+- Test configuration does not leak into production.
+- Production configuration is not embedded in test artifacts.
+- Local paths do not make artifacts non-portable.
+
+==================================================
+19. ACTUATOR AND HEALTH MONITORING AUDIT
+==================================================
+
+For new production-style Spring Boot APIs, verify:
+
+- Spring Boot Actuator is included.
+- The health endpoint is exposed.
+- /actuator/health is available through configuration.
+- Health details are configured as required.
+- Security implications of show-details=always are reviewed.
+- Non-health management endpoints are not exposed without requirement.
+- The health contract and deployment documentation are consistent.
+
+Do not require Actuator as an unrelated change in a narrowly scoped modification to an existing project.
+
+==================================================
+20. TESTING AUDIT
+==================================================
+
+Inspect all tests and determine whether they validate meaningful observable behavior.
+
+Verify applicable use of:
+
+- JUnit 5
+- Mockito
+- WireMock
+- Integration tests
+- Contract tests
+- Security tests
+- Controller tests
+- Service tests
+- Repository tests
+- Mapper tests
+- Validator tests
+- Exception-handler tests
+- External client tests
+
+Validate applicable scenarios:
+
+- Success paths
+- Validation failures
+- Not-found behavior
+- Conflict behavior
+- Boundary conditions
+- Exception paths
+- Null handling
+- Empty-string behavior
+- Blank-string behavior
+- Empty collections
+- Single-item collections
+- Multiple-item collections
+- Duplicate values
+- Repository failures
+- External service success
+- External client errors
+- External server errors
+- External timeouts
+- External response mapping
+- External error mapping
+- OAuth token success
+- OAuth token failure
+- Expired-token behavior
+- Authorization behavior
+- Standardized responses
+- Error responses
+- Correlation behavior containing application logic
+
+Check for:
+
+- Tests without meaningful assertions
+- Tests that always pass
+- Disabled tests
+- Ignored failures
+- Mocking of DTOs
+- Mocking of entities
+- Mocking of simple value objects
+- Mocking the class under test
+- Excessive mocking
+- Mockito-only tests used where real HTTP behavior requires WireMock
+- Tests that verify internal implementation details rather than observable behavior
+- Tests that rely on ordering without a requirement
+- Tests inconsistent with OpenAPI
+- Tests inconsistent with production behavior
+- Tests created only to execute lines
+- Production behavior altered only to improve coverage
+
+For newly created tests, verify the applicable naming convention:
+
+methodName_ShouldExpectedResult_WhenCondition
+
+Preserve and accept established project naming conventions when they already exist.
+
+==================================================
+21. JACOCO PER-CLASS COVERAGE AUDIT
+==================================================
+
+Locate the latest JaCoCo report produced by the latest relevant test execution.
+
+Do not estimate coverage.
+
+Do not claim coverage results solely from source inspection.
+
+Verify:
+
+- The Maven JaCoCo check enforces coverage at CLASS level.
+- The counter is LINE.
+- The value is COVEREDRATIO.
+- The minimum is 80% per included production class unless the project defines a stricter rule.
+- Enforcement is not limited only to services.
+- Aggregate or package coverage is not used as a substitute for per-class enforcement.
+- Every included production class was evaluated.
+- No broad package exclusion hides uncovered behavior.
+- Every exclusion is minimal, explicit, technically justified, and documented.
+- Generated code and behavior-free holders are the only kinds of exclusions used where justified.
+- Added tests validate meaningful behavior.
+- The complete test suite passed when execution was performed.
+- The JaCoCo report corresponds to the latest test execution.
+- Maven verification passed when execution was performed.
+
+Review applicable production classes, including:
+
+- Controllers
+- Services
+- Custom repositories
+- API clients
+- Adapters
+- Mappers
+- Validators
+- Exception handlers
+- Security components
+- Configuration classes with behavior
+- Utilities with behavior
+- Application startup classes
+- Other production classes containing executable behavior
+
+Report:
+
+- JaCoCo report location
+- Report-generation timestamp when available
+- Total included production classes
+- Number of classes at or above 80%
+- Number of classes below 80%
+- Aggregate line coverage
+- All classes below 80%
+- Lowest-covered included classes
+- Documented exclusions
+- Invalid or unjustified exclusions
+- Test totals
+- Maven verification result
+- JaCoCo enforcement result
+
+If no current report exists, set coverage compliance to NOT VERIFIED.
+
+Do not report PASS based only on pom.xml configuration.
+
+==================================================
+22. POSTMAN COLLECTION AUDIT
+==================================================
+
+Locate every Postman collection relevant to the project.
+
+Verify:
+
+- The required collection exists.
+- The collection is valid JSON.
+- Format v2.1 is used.
+- Naming follows <application-name>.postman_collection.json unless an existing convention applies.
+- Requests are grouped appropriately.
+- Every in-scope OpenAPI operation is included.
+- No out-of-scope operation is included.
+- {{baseUrl}} or the established project variable is used.
+- Environment-specific URLs are not hardcoded.
+- Secret values are not hardcoded.
+- Authentication values use variables such as {{accessToken}}.
+- Headers match OpenAPI and implementation.
+- Path parameters match OpenAPI.
+- Query parameters match OpenAPI.
+- Request bodies match DTOs and validation rules.
+- Examples are safe and valid.
+- Request and folder descriptions are clear.
+- Positive scenarios are included where required.
+- Negative scenarios are included where required.
+- Post-response scripts validate meaningful observable behavior.
+
+Verify applicable assertions for:
+
+- Expected HTTP status
+- Response content type
+- Standardized API response structure
+- Required response fields
+- Centralized SUCCESS or FAILED values
+- Correlation ID response header
+- Deterministic endpoint-specific values
+
+Detect:
+
+- Always-passing assertions
+- Assertions against undocumented fields
+- Missing assertions
+- Invalid scripts
+- Missing endpoints
+- Extra endpoints
+- Incorrect methods
+- Incorrect paths
+- Invalid request bodies
+- Incorrect status expectations
+- Hardcoded secrets
+- Hardcoded environment URLs
+- Sensitive-value logging
+- Unsafe production data modification
+- Unnecessary request chaining
+- Extracted values stored before source-response validation
+- Sensitive extracted values printed to logs
+- Environment files generated without an explicit requirement
+
+Cross-check every request against:
+
+1. Project requirement
+2. OpenAPI operation
+3. Controller implementation
+4. Validation rules
+5. Security configuration
+6. Standard response contract
+7. Applicable tests
+
+For every request, report:
+
+- Request name
+- Folder
+- Collection path
+- OpenAPI operation
+- Implementation method
+- Authentication
+- Request alignment
+- Assertion alignment
+- Status
+- Evidence
+- Required remediation
+
+Do not claim successful Postman import or execution unless it was actually performed and observed.
+
+If execution was not performed, state exactly:
+
+API test artifact execution was not performed in this environment.
+
+Then provide the exact validation or execution command without exposing secrets.
+
+==================================================
+23. APACHE JMETER AUDIT
+==================================================
+
+Locate every applicable JMeter JMX file and supporting data file.
+
+Verify:
+
+- The required test plan exists.
+- JMX XML is well-formed.
+- Naming follows <application-name>-api-test.jmx unless an existing convention applies.
+- The test plan is based on actual OpenAPI operations.
+- HTTP Request Defaults are used for shared settings.
+- Environment values are parameterized.
+- No environment URL is hardcoded.
+- No credential, token, API key, or client secret is hardcoded.
+- Shared headers use an HTTP Header Manager.
+- Content-Type and Accept are included only where required.
+- Authentication headers are included only where required.
+- Correlation headers are included only where required.
+- Only in-scope endpoints have samplers.
+- Request payloads match DTOs and validation rules.
+- Assertions validate expected status codes.
+- Assertions validate meaningful response content.
+- JSON assertions and extractors are used only for JSON responses.
+- Extractors exist only when later requests require extracted values.
+- Extracted values are validated before use.
+- Variables are initialized before use.
+- CSV Data Set Config is used where multiple records are required.
+- CSV headers match referenced JMeter variables.
+- CSV data is synthetic or sanitized.
+- Heavy GUI listeners are not enabled for non-GUI load execution.
+- Production is not targeted by default.
+- Destructive test data is not created against shared or production environments.
+- Arbitrary performance thresholds are not defined.
+- Functional success is not reported as performance success.
+- Paths to files are portable.
+
+Verify use of applicable properties:
+
+- ${__P(baseUrl,)}
+- ${__P(threads,1)}
+- ${__P(rampUp,1)}
+- ${__P(duration,60)}
+- ${__P(accessToken,)}
+
+Verify these are used only when applicable and actually referenced by the test plan.
+
+Validate load-model settings only against explicit requirements:
+
+- Thread count
+- Ramp-up
+- Loop count
+- Duration
+- Pacing
+- Think time
+- Timeouts
+- Performance thresholds
+
+Do not invent missing performance requirements.
+
+Cross-check every sampler against:
+
+1. Project requirement
+2. OpenAPI operation
+3. Controller implementation
+4. Postman request
+5. Validation rules
+6. Authentication requirements
+7. Standard response contract
+
+For every sampler, report:
+
+- Scenario name
+- Thread Group
+- JMX path
+- OpenAPI operation
+- Implementation method
+- Request configuration
+- Parameterization
+- Correlation or extraction
+- Assertions
+- Status
+- Evidence
+- Required remediation
+
+Do not execute destructive, load, stress, spike, or endurance tests.
+
+A minimal non-GUI functional verification may be executed only when:
+
+- Repository instructions authorize it.
+- The required target is available.
+- The target is confirmed as a safe non-production environment.
+- Required configuration is present.
+- The execution does not create unsafe or destructive data.
+
+Do not claim successful JMeter loading or execution unless it was performed and observed.
+
+If execution was not performed, state exactly:
+
+API test artifact execution was not performed in this environment.
+
+Provide an applicable command based only on properties actually used by the JMX file:
+
+jmeter -n -t <test-plan>.jmx -l results.jtl -e -o report -JbaseUrl=<base-url> -Jthreads=<threads> -JrampUp=<seconds> -Jduration=<seconds>
+
+Do not include secrets directly in committed scripts or displayed command examples.
+
+==================================================
+24. BUILD AND DEPENDENCY AUDIT
+==================================================
+
+Inspect pom.xml and all applicable Maven configuration.
+
+Verify:
+
+- Every dependency is required.
+- No framework was replaced without authorization.
+- No dependency was upgraded without authorization.
+- Dependency scopes are correct.
+- Versions follow project dependency management.
+- Lombok configuration is valid.
+- OpenAPI generation or validation is correctly configured.
+- Generated source directories are correct.
+- Contract-first build phases are correct.
+- Test plugins are correctly configured.
+- JUnit 5 is used.
+- JaCoCo is configured correctly.
+- Per-class 80% enforcement is configured.
+- Postman and JMeter support matches requirements.
+- Build profiles do not bypass mandatory validation.
+- Packaging matches deployment requirements.
+
+Identify:
+
+- Missing dependencies
+- Unauthorized dependencies
+- Duplicate dependencies
+- Conflicting dependencies
+- Incorrect version overrides
+- Incorrect scopes
+- Unused dependencies
+- Missing plugins
+- Unauthorized plugins
+- Build steps that bypass contract validation
+- Generated source duplication
+- Incorrect generated source locations
+- Required generated artifacts missing
+- Broad JaCoCo exclusions
+
+Do not classify a dependency as unused through text search alone.
+
+Consider annotations, reflection, framework auto-configuration, runtime usage, plugins, and generated code.
+
+==================================================
+25. MAVEN VERIFICATION
+==================================================
+
+If command execution is available and execution is safe, run:
+
+mvn clean verify
+
+Review the complete result for:
+
+- Compilation
+- Unit tests
+- Integration tests
+- JaCoCo report generation
+- JaCoCo per-class enforcement
+- Static analysis
+- Contract generation or validation
+- Packaging
+- Other configured verification checks
+
+Focused commands may be used for diagnosis, but they do not replace the final:
+
+mvn clean verify
+
+Report:
+
+- Exact command
+- Whether it was executed
+- Exit result
+- Compilation result
+- Unit-test result
+- Integration-test result
+- JaCoCo result
+- Static-analysis result
+- Contract-validation result
+- Maven verification result
+- Relevant failure references
+
+If Maven verification cannot be executed, state exactly:
+
+Verification was not executed in this environment.
+
+Then provide:
+
+mvn clean verify
+
+Do not report any unexecuted check as PASS.
+
+==================================================
+26. PRODUCTION-READINESS AUDIT
+==================================================
+
+Assess applicable production-readiness requirements:
+
+- Logging
+- File rolling and retention
+- Correlation IDs
+- Request logging
+- Safe exception handling
+- Request validation
+- Authentication
+- Authorization
+- Secret management
+- Health monitoring
+- OpenAPI documentation
+- Externalized configuration
+- Environment support
+- Standardized API responses
+- Centralized messages
+- Centralized response statuses
+- Unit tests
+- Integration tests
+- WireMock tests for external integrations
+- Postman collection
+- JMeter test plan
+- Per-class JaCoCo enforcement
+- Successful Maven verification
+- Middleware isolation
+- Integration mapping documentation
+
+Do not classify the project as production ready when any mandatory Critical or High finding remains unresolved.
+
+==================================================
+27. END-TO-END TRACEABILITY
+==================================================
+
+Create a traceability record for every approved API operation:
+
+Project Requirement
+-> OpenAPI Operation
+-> API Model
+-> Controller
+-> Service
+-> Repository or Integration Client
+-> Internal/External Mapping
+-> Validation
+-> Security
+-> Exception and Error Contract
+-> Unit Test
+-> Integration or WireMock Test
+-> Postman Request
+-> JMeter Sampler
+
+Use these statuses:
+
+- COMPLETE
+- PARTIAL
+- MISSING
+- CONFLICTING
+- NOT APPLICABLE
+- NOT VERIFIED
+
+An operation must not be marked COMPLETE when a mandatory link is missing or inconsistent.
+
+==================================================
+28. COMPLIANCE STATUSES
+==================================================
+
+Use only:
+
+PASS
+PARTIAL PASS
+FAIL
+NOT APPLICABLE
+NOT VERIFIED
+AUTHORITATIVE SOURCE CONFLICT
+
+Definitions:
+
+PASS:
+The requirement is fully satisfied and verified using repository or execution evidence.
+
+PARTIAL PASS:
+Some mandatory elements are satisfied, but one or more mandatory elements are incomplete or inconsistent.
+
+FAIL:
+A mandatory requirement is violated or missing.
+
+NOT APPLICABLE:
+The requirement genuinely does not apply, with a specific justification.
+
+NOT VERIFIED:
+Evidence is insufficient or required execution was not performed.
+
+AUTHORITATIVE SOURCE CONFLICT:
+Two or more authoritative requirements conflict and prevent an objective decision.
+
+Do not mark PASS when evidence is incomplete.
+
+==================================================
+29. SEVERITY CLASSIFICATION
+==================================================
+
+Use:
+
+CRITICAL:
+Immediate security, credential, data integrity, contractual, destructive-operation, or severe production risk.
+
+HIGH:
+Mandatory violation that can cause contract failure, unauthorized access, incorrect behavior, build failure, test enforcement failure, or major operational failure.
+
+MEDIUM:
+Mandatory violation causing significant maintainability, traceability, testing, integration, logging, configuration, or operational risk.
+
+LOW:
+Limited mandatory compliance issue with low immediate impact.
+
+INFORMATIONAL:
+Verified observation that does not violate a mandatory requirement.
+
+Do not inflate severity.
+
+==================================================
+30. COMPLIANCE SCORE
+==================================================
+
+Calculate a compliance score from 0 to 100.
+
+Use this weighting:
+
+- Contract-first and OpenAPI compliance: 15%
+- Scope compliance: 10%
+- Architecture and middleware compliance: 10%
+- Security compliance: 15%
+- API response, exception, and constants compliance: 10%
+- Testing and WireMock compliance: 10%
+- JaCoCo per-class compliance: 10%
+- Postman compliance: 5%
+- JMeter compliance: 5%
+- Logging, correlation ID, configuration, and health compliance: 5%
+- Build and verification compliance: 5%
+
+Rules:
+
+- NOT APPLICABLE requirements must be removed from the applicable denominator.
+- NOT VERIFIED requirements must not be treated as PASS.
+- Mandatory requirements have greater impact than informational observations.
+- A Critical finding prevents an overall PASS.
+- An unresolved High finding prevents an overall PASS.
+- Contract-first FAIL prevents an overall PASS.
+- Security FAIL prevents an overall PASS.
+- Maven verification NOT VERIFIED prevents a verified production-readiness PASS.
+- Per-class coverage NOT VERIFIED prevents JaCoCo compliance from being marked PASS.
+- A score must not hide Critical or High findings.
+
+==================================================
+31. REQUIRED REPORT FORMAT
+==================================================
+
+Generate the report in the following format:
+
+# Senior Java API Engineer Compliance Audit
+
+## 1. Executive Summary
+
+Include:
+
+- Overall Compliance
+- Overall Compliance Score
+- Release Recommendation
+- Contract-First Compliance
+- Scope Compliance
+- Architecture Compliance
+- Security Compliance
+- Standard API Response Compliance
+- Centralized Constants Compliance
+- Logging and Correlation ID Compliance
+- Lombok Compliance
+- Middleware Compliance
+- Automated Test Compliance
+- JaCoCo Per-Class Compliance
+- Postman Compliance
+- JMeter Compliance
+- Build Compliance
+- Production Readiness
+- Critical finding count
+- High finding count
+- Medium finding count
+- Low finding count
+- Informational finding count
+- Not Verified count
+- Most important conclusion
+
+## 2. Authoritative Sources Reviewed
+
+For each source:
+
+- Source type
+- Repository-relative path
+- Relevant section
+- Applicable scope
+- Read status
+
+## 3. Authoritative Source Conflicts
+
+For every conflict:
+
+- Conflict ID
+- Sources
+- Conflicting requirements
+- Affected components
+- Audit impact
+- Required decision
+
+If none exist, state:
+
+No authoritative source conflicts were identified.
+
+## 4. Requirement Inventory
+
+For every requirement:
+
+- Requirement ID
+- Category
+- Requirement
+- Authoritative source
+- Mandatory or conditional
+- Applicable component
+- Validation method
+
+## 5. Compliance Score Method
+
+Explain:
+
+- Applicable category weights
+- Adjustments for NOT APPLICABLE items
+- Treatment of NOT VERIFIED items
+- Effect of Critical and High findings
+- Final score calculation
+
+## 6. Requirement Compliance Matrix
+
+For every requirement:
+
+- Requirement ID
+- Requirement summary
+- Source
+- Related files
+- Evidence
+- Status
+- Severity
+- Required remediation
+
+Do not omit requirements that passed.
+
+## 7. Scope Assessment
+
+Include:
+
+- In-scope components
+- Out-of-scope components
+- Not-verified components
+- Unauthorized changes
+- Naming-preservation findings
+- Unrelated refactoring or package changes
+
+## 8. Contract-First and OpenAPI Assessment
+
+Include:
+
+- Contract path
+- OpenAPI version
+- Contract-first workflow evidence
+- Implementation alignment
+- Missing operations
+- Undocumented operations
+- Contract drift
+- Schema mismatches
+- Validation mismatches
+- Status-code mismatches
+- Security mismatches
+- Error-contract mismatches
+- Breaking changes
+- Final verdict
+
+## 9. API Operation Traceability Matrix
+
+For every approved API operation:
+
+- Requirement
+- OpenAPI operation
+- Controller
+- Service
+- Repository or Integration Client
+- Mapping
+- Validation
+- Security
+- Error handling
+- Unit test
+- Integration or WireMock test
+- Postman request
+- JMeter sampler
+- Final status
+
+## 10. Architecture Assessment
+
+Include findings for:
+
+- Controllers
+- Services
+- Repositories
+- Entities
+- DTOs
+- Mappers
+- Transactions
+- Integration clients
+- Package placement
+- Layer violations
+
+## 11. Middleware and Integration Assessment
+
+Include:
+
+- Consumer contract isolation
+- Provider contract isolation
+- Internal and external DTO separation
+- Request mapping
+- Response mapping
+- Error mapping
+- Authentication boundary
+- External client implementation
+- Mapping documentation
+
+If not applicable, explain why.
+
+## 12. Security Assessment
+
+Include evidence-based findings only.
+
+Mask sensitive values.
+
+## 13. Standard API Response and Exception Assessment
+
+Include:
+
+- ApiResponse<T> usage
+- HTTP status correctness
+- Success response consistency
+- Error response consistency
+- @RestControllerAdvice usage
+- Specific exception mapping
+- Sensitive-data exposure
+- 204 response compliance
+
+## 14. Centralized Constants Assessment
+
+Include:
+
+- Message constants
+- Response status constants
+- Annotation messages
+- Validation messages
+- OpenAPI descriptions
+- Duplicate constants
+- Generic constants classes
+- Preservation of existing architecture
+
+## 15. Lombok Assessment
+
+Include:
+
+- Dependencies and annotation processing
+- Spring component usage
+- DTO usage
+- Entity usage
+- Constructor behavior
+- Equality behavior
+- toString safety
+- Builder safety
+- Serialization compatibility
+- Verification status
+
+## 16. Logging and Correlation ID Assessment
+
+Include:
+
+- Logging framework
+- System.out usage
+- Console logging
+- File logging
+- Rolling and compression
+- Retention
+- Environment-specific filenames
+- Request logging
+- MDC handling
+- X-Correlation-Id behavior
+- Sensitive logging
+- Log-file source-control findings
+
+## 17. Configuration and Health Assessment
+
+Include:
+
+- Externalized configuration
+- Environment profiles
+- URLs
+- Credentials
+- Secrets
+- Actuator
+- Health endpoint
+- Health-detail security
+- Portability
+
+## 18. Automated Test Assessment
+
+Include:
+
+- JUnit 5
+- Mockito
+- WireMock
+- Unit tests
+- Integration tests
+- Security tests
+- Contract tests
+- Positive scenarios
+- Negative scenarios
+- Boundary scenarios
+- Exception scenarios
+- Mocking violations
+- Meaningless tests
+- Disabled tests
+
+Do not estimate code coverage.
+
+## 19. JaCoCo Per-Class Assessment
+
+Include:
+
+- Report path
+- Report timestamp
+- Maven rule configuration
+- CLASS element enforcement
+- LINE counter enforcement
+- COVEREDRATIO enforcement
+- Required threshold
+- Total included classes
+- Classes meeting threshold
+- Classes below threshold
+- Aggregate coverage
+- Lowest-covered classes
+- All below-threshold classes
+- Exclusions
+- Exclusion justifications
+- Maven verification result
+- Final verdict
+
+## 20. Postman Collection Assessment
+
+Include:
+
+- Collection files
+- Collection format
+- Naming
+- Operation coverage
+- Contract alignment
+- Authentication
+- Variables
+- Positive tests
+- Negative tests
+- Assertions
+- Request chaining
+- Secret handling
+- Missing requests
+- Extra requests
+- Execution status
+- Final verdict
+
+## 21. Apache JMeter Assessment
+
+Include:
+
+- JMX files
+- XML validity
+- Naming
+- Scenario coverage
+- Contract alignment
+- HTTP Request Defaults
+- Header Manager
+- Parameterization
+- Thread Groups
+- Load settings
+- Correlation
+- Extractors
+- Assertions
+- CSV data
+- Portability
+- Secret handling
+- Listeners
+- Target safety
+- Missing scenarios
+- Extra scenarios
+- Execution status
+- Final verdict
+
+## 22. Dependency and Build Assessment
+
+Include:
+
+- Required dependencies
+- Unauthorized dependencies
+- Duplicate dependencies
+- Conflicts
+- Scopes
+- Plugins
+- Contract-first build workflow
+- Lombok processing
+- JaCoCo enforcement
+- Generated sources
+- Packaging
+
+## 23. Maven Verification
+
+Include:
+
+- Exact command
+- Execution status
+- Compilation result
+- Unit-test result
+- Integration-test result
+- JaCoCo result
+- Static-analysis result
+- Contract-validation result
+- Maven verification result
+- Failure evidence
+
+## 24. Findings by Severity
+
+Order findings:
+
+1. Critical
+2. High
+3. Medium
+4. Low
+5. Informational
+6. Not Verified
+
+For each finding:
+
+- Finding ID
+- Title
+- Severity
+- Compliance status
+- Violated requirement
+- Authoritative source
+- Exact file path
+- Class, method, endpoint, property, request, or sampler
+- Line number or range
+- Evidence
+- Impact
+- Smallest required remediation
+
+## 25. Required Remediation Plan
+
+List only remediation required to achieve compliance.
+
+Order by:
+
+1. Release blockers
+2. Critical findings
+3. High findings
+4. Contract dependencies
+5. Security dependencies
+6. Build dependencies
+7. Test and coverage dependencies
+8. Artifact alignment dependencies
+
+Do not include optional improvements.
+
+Do not redesign unrelated architecture.
+
+## 26. Final Verdict
+
+Use this exact format:
+
+Overall Compliance: PASS | PARTIAL PASS | FAIL | NOT VERIFIED
+Overall Compliance Score: X/100
+Contract-First Compliance: PASS | PARTIAL PASS | FAIL | NOT VERIFIED
+Scope Compliance: PASS | PARTIAL PASS | FAIL | NOT VERIFIED
+Architecture Compliance: PASS | PARTIAL PASS | FAIL | NOT VERIFIED
+Middleware Compliance: PASS | PARTIAL PASS | FAIL | NOT APPLICABLE | NOT VERIFIED
+Security Compliance: PASS | PARTIAL PASS | FAIL | NOT VERIFIED
+Standard API Response Compliance: PASS | PARTIAL PASS | FAIL | NOT VERIFIED
+Centralized Constants Compliance: PASS | PARTIAL PASS | FAIL | NOT VERIFIED
+Lombok Compliance: PASS | PARTIAL PASS | FAIL | NOT APPLICABLE | NOT VERIFIED
+Logging and Correlation ID Compliance: PASS | PARTIAL PASS | FAIL | NOT VERIFIED
+Configuration and Health Compliance: PASS | PARTIAL PASS | FAIL | NOT VERIFIED
+Automated Test Compliance: PASS | PARTIAL PASS | FAIL | NOT VERIFIED
+JaCoCo Per-Class Compliance: PASS | PARTIAL PASS | FAIL | NOT VERIFIED
+Postman Compliance: PASS | PARTIAL PASS | FAIL | NOT VERIFIED
+JMeter Compliance: PASS | PARTIAL PASS | FAIL | NOT VERIFIED
+Build Compliance: PASS | PARTIAL PASS | FAIL | NOT VERIFIED
+Production Readiness: PASS | PARTIAL PASS | FAIL | NOT VERIFIED
+
+Release Recommendation: APPROVED | APPROVED WITH REQUIRED REMEDIATION | REJECTED | NOT VERIFIED
+
+Release-Blocking Findings:
+- List every release-blocking Finding ID.
+- If none exist, state: None.
+
+Verification Performed:
+- List only commands and checks actually executed.
+
+Verification Not Performed:
+- List all checks that were not executed.
+
+==================================================
+32. FINAL ENFORCEMENT
+==================================================
+
+This is a read-only audit.
+
+Do not modify any repository file.
+
+Do not generate fixes.
+
+Do not create missing artifacts.
+
+Do not regenerate the OpenAPI contract.
+
+Do not regenerate the Postman collection.
+
+Do not regenerate the JMeter test plan.
+
+Do not add tests to improve coverage.
+
+Do not change JaCoCo configuration.
+
+Do not apply formatting.
+
+Do not rename anything.
+
+Do not perform unrelated improvements.
+
+Every PASS, PARTIAL PASS, and FAIL must be supported by direct repository or execution evidence.
+
+Every violation must be mapped to a specific authoritative requirement.
+
+If evidence is missing, use NOT VERIFIED.
+
+If the project contains unrelated issues that do not violate the approved requirements or applicable mandatory standards, do not include them as required remediation.
+
+Begin the audit now by reading the complete Senior Java API Engineer agent instructions, all applicable skill files, the OpenAPI contract, the project requirements, and the complete repository structure before evaluating any implementation.
